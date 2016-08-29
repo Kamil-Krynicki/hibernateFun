@@ -5,6 +5,9 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 import org.krynicki.hibernate.dto.UserDetails;
 
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  * Created by K on 2016-08-27.
  */
@@ -12,8 +15,11 @@ public class main {
 
     public static void main(String[] args){
         UserDetails userDetails = new UserDetails();
-        userDetails.setUserId(1);
-        userDetails.setUserName("Kamil");
+        userDetails.setUserId(2);
+        userDetails.setUserName("Kamil2");
+        userDetails.setAddress("Baker street2");
+        userDetails.setDescription("Fun fun fun2");
+        userDetails.setJoiningDate(new Date(0));
 
         SessionFactory sf = (new Configuration()).configure().buildSessionFactory();
         Session session = sf.openSession();
