@@ -15,18 +15,29 @@ public class main {
 
     public static void main(String[] args){
         UserDetails userDetails = new UserDetails();
-        userDetails.setUserId(2);
-        userDetails.setUserName("Kamil2");
-        userDetails.setAddress("Baker street2");
-        userDetails.setDescription("Fun fun fun2");
-        userDetails.setJoiningDate(new Date(0));
-
+        //userDetails.setUserId(3);
+        //userDetails.setUserName("Kamil2");
+        //userDetails.setAddress("Baker street2");
+        //userDetails.setDescription("Fun fun fun2");
+        //userDetails.setJoiningDate(new Date(0));
+//
         SessionFactory sf = (new Configuration()).configure().buildSessionFactory();
         Session session = sf.openSession();
+//
+        //session.beginTransaction();
+        //session.save(userDetails);
+        //session.getTransaction().commit();
+        //session.close();
+
+        session = sf.openSession();
 
         session.beginTransaction();
-        session.save(userDetails);
+        UserDetails userDetails2 = session.get(UserDetails.class, 3);
         session.getTransaction().commit();
+        session.close();
+
+
+
     }
 
 
