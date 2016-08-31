@@ -13,6 +13,7 @@ public class UserDetails {
 
     @Id
     @Column(name = "USER_ID")
+    @GeneratedValue
     private int userId;
 
     @Basic
@@ -22,7 +23,9 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date joiningDate;
 
-    private String address;
+
+
+    private Address address;
 
     @Lob
     private String description;
@@ -54,14 +57,6 @@ public class UserDetails {
         this.joiningDate = joiningDate;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getDescription() {
         return description;
     }
@@ -70,5 +65,13 @@ public class UserDetails {
         this.description = description;
     }
 
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String getNotToBeSaved() {
+        return notToBeSaved;
+    }
 
 }
