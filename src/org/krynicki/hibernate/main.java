@@ -18,7 +18,8 @@ public class main {
         UserDetails userDetails = new UserDetails();
         userDetails.setUserId(3);
         userDetails.setUserName("Kamil2");
-        userDetails.setAddress( new Address("Street", "City", "zipcode"));
+        userDetails.getAddresses().add(new Address("Street1", "City1", "zipcode1"));
+        userDetails.getAddresses().add(new Address("Street2", "City2", "zipcode2"));
         userDetails.setDescription("Fun fun fun2");
         userDetails.setJoiningDate(new Date(0));
 //

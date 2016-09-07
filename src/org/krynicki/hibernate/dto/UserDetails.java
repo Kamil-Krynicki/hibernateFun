@@ -1,7 +1,11 @@
 package org.krynicki.hibernate.dto;
 
+import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
+
 import javax.persistence.*;
-import java.util.Date;
+import java.util.*;
 
 /**
  * Created by K on 2016-08-28.
@@ -23,9 +27,11 @@ public class UserDetails {
     @Temporal(TemporalType.DATE)
     private Date joiningDate;
 
-
-
-    private Address address;
+    @ElementCollection
+    @JoinTable(name = "Adresses", joinColumns = @JoinColumn(name = "USER_ID"))
+    @GenericGenerator(name = "increment-gen", strategy = "increment")
+    @CollectionId(columns = {@Column(name = "ADDRESS_ID")}, type = @Type(type = "long"), generator = "increment-gen")
+    private Collection<Address> addresses = new ArrayList<>();
 
     @Lob
     private String description;
@@ -66,9 +72,11 @@ public class UserDetails {
     }
 
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddresses(Collection<Address> addresses) {
+        this.addresses = addresses;
     }
+
+    public Collection<Address> getAddresses() { return this.addresses; }
 
     public String getNotToBeSaved() {
         return notToBeSaved;
